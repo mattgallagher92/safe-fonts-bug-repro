@@ -57,8 +57,11 @@ let containerBox (model: Model) (dispatch: Msg -> unit) =
     Bulma.box [
         Bulma.content [
             Html.ol [
-                for todo in model.Todos do
-                    Html.li [ prop.text todo.Description ]
+                for ix, todo in model.Todos |> List.indexed do
+                    Html.li [
+                        if ix = 0 then prop.className "fancy-text"
+                        prop.text todo.Description
+                    ]
             ]
         ]
         Bulma.field.div [
