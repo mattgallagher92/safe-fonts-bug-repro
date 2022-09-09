@@ -1,53 +1,12 @@
-# SAFE Template
+# SAFE fonts bug repro
 
-This template can be used to generate a full-stack web application using the [SAFE Stack](https://safe-stack.github.io/). It was created using the dotnet [SAFE Template](https://safe-stack.github.io/docs/template-overview/). If you want to learn more about the template why not start with the [quick start](https://safe-stack.github.io/docs/quickstart/) guide?
+Demonstrates a bug when referring to an npm-installed font via SCSS
 
-## Install pre-requisites
+Before installing the font (https://github.com/mattgallagher92/safe-fonts-bug-repro/commit/b8254a7ae5e2612f67bc10b2ea20ea983a856e7e):
+![Standard SAFE Todo list. The targeted item does not have the correct typeface.](https://user-images.githubusercontent.com/46973220/189375920-99815df8-609c-42cb-b991-91889c9afd73.png)
 
-You'll need to install the following pre-requisites in order to build SAFE applications
+After installing the font (https://github.com/mattgallagher92/safe-fonts-bug-repro/commit/14c86f432ed34f1f89d7c670434440ca49628fcb):
+![Browser console showing OTS parsing errors](https://user-images.githubusercontent.com/46973220/189376348-b90a5c02-4020-434e-8ba1-19643cd09857.png)
 
-* [.NET Core SDK](https://www.microsoft.com/net/download) 6.0 or higher
-* [Node 16](https://nodejs.org/en/download/)
-
-## Starting the application
-
-Before you run the project **for the first time only** you must install dotnet "local tools" with this command:
-
-```bash
-dotnet tool restore
-```
-
-To concurrently run the server and the client components in watch mode use the following command:
-
-```bash
-dotnet run
-```
-
-Then open `http://localhost:8080` in your browser.
-
-The build project in root directory contains a couple of different build targets. You can specify them after `--` (target name is case-insensitive).
-
-To run concurrently server and client tests in watch mode (you can run this command in parallel to the previous one in new terminal):
-
-```bash
-dotnet run -- RunTests
-```
-
-Client tests are available under `http://localhost:8081` in your browser and server tests are running in watch mode in console.
-
-Finally, there are `Bundle` and `Azure` targets that you can use to package your app and deploy to Azure, respectively:
-
-```bash
-dotnet run -- Bundle
-dotnet run -- Azure
-```
-
-## SAFE Stack Documentation
-
-If you want to know more about the full Azure Stack and all of it's components (including Azure) visit the official [SAFE documentation](https://safe-stack.github.io/docs/).
-
-You will find more documentation about the used F# components at the following places:
-
-* [Saturn](https://saturnframework.org/)
-* [Fable](https://fable.io/docs/)
-* [Elmish](https://elmish.github.io/elmish/)
+After updating webpack config (https://github.com/mattgallagher92/safe-fonts-bug-repro/commit/9037df9354f567ce8ed613a4eb68fb553bcdef26):
+![Standard SAFE Todo list. The targeted item has the correct typeface](https://user-images.githubusercontent.com/46973220/189376579-8334cb7b-e638-42d5-b567-4d2988d5545d.png)
